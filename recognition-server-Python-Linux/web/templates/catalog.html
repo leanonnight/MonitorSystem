@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{bookname}}</title>
+</head>
+<body>
+    <p>{{bookname}}目录:</p>
+    <dl>
+        {% for chaptername in chaptername_list: %}
+        <dd> <a href="{{'/readbook/?cnn='}}{{loop.index-1}}{{'&cn='+chaptername}}"> {{ chaptername }} </a></dd>
+        {% endfor %}
+    </dl>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{chapterName}}</title>
+</head>
+<body>
+    <p>{{chapterName}}</p>
+    <a href="{{'/readbook/?cnn='}}{{chapterName_NO-1}}{{'&cn='+chapterName_list[chapterName_NO-1]}}">上一页</a>    <a href="/catalog/book/{{bookName}}">目录</a>    <a href="{{'/readbook/?cnn='}}{{chapterName_NO+1}}{{'&cn='+chapterName_list[chapterName_NO+1]}}">下一页</a>
+
+    <div id="content">
+        {% for para in chapterContent: %}
+            <p>{{para}}</p>
+        {% endfor %}
+    </div>
+
+    <a>上一页</a>    <a>目录</a>    <a>下一页</a>
+</body>
+</html>
