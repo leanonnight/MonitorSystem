@@ -42,9 +42,13 @@ public class DataFrame {
      * @param userID 发送该数据帧的ID
      */
     DataFrame(short keyNum, short userID){
+        if(keyNum >= Short.MAX_VALUE || userID >= Short.MAX_VALUE){
+            return;
+        }
         this.keyNum = keyNum;
         this.userID = userID;
         dataFrameBody = new DataFrameBody[this.keyNum];
+        frameLen = head_len;
     }
     public DataFrame(int keyNum, int userID){
         if(keyNum >= Short.MAX_VALUE || userID >= Short.MAX_VALUE){
@@ -53,6 +57,7 @@ public class DataFrame {
         this.keyNum = (short)keyNum;
         this.userID = (short)userID;
         dataFrameBody = new DataFrameBody[this.keyNum];
+        frameLen = head_len;
     }
 
     /**
@@ -82,6 +87,7 @@ public class DataFrame {
      */
     public void addKey(String key, byte[] value){
         dataFrameBody[index] = new DataFrameBody(key, value);
+        frameLen += dataFrameBody[index].getKeyLen();
         index++;
     }
 

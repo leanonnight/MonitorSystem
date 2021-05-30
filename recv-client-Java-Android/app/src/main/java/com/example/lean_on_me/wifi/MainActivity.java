@@ -29,7 +29,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //    public final static int PORT = 6515;
     public final static String IP_ADDRESS = "121.196.172.87";
     public final static int PORT = 6516;
-    //控件
+
+    /**
+     * 控件
+     */
     Button buttonConnection = null;
     Button buttonSend = null;
     MyBitmap myBitmap = null;
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //设置监听器
         setListener();
 
+        //与其他线程通信的句柄
         handler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
@@ -183,8 +187,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void run() {
                     try {
                         DataFrame dataFrame = new DataFrame(0,2);
-//                        dataFrame.addKey("b", "".getBytes());
-                        dataFrame.countFrameLen();
+
                         byte[] bytes = dataFrame.getFrameBytes();
                         outputStream.write(bytes);
                         outputStream.flush();
